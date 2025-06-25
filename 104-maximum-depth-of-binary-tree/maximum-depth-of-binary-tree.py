@@ -6,25 +6,8 @@
 #         self.right = right
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        # return self.maxDepthHelper(root, 0)
+        # recursive dfs
         if not root:
             return 0
 
-        max_depth = 0
-        stack =[(root, 1)]
-        while stack:
-            node, depth = stack.pop()
-            max_depth = max(max_depth, depth)
-            if node.left:
-                stack.append((node.left, depth+1))
-            if node.right:
-                stack.append((node.right, depth+1))
-        return max_depth
-
-    # def maxDepthHelper(self, root, depth):
-    #     if not root:
-    #         return depth
-        
-    #     left = self.maxDepthHelper(root.left, depth+1)
-    #     right = self.maxDepthHelper(root.right, depth+1)
-    #     return max(left, right)
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))

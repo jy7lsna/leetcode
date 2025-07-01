@@ -1,12 +1,8 @@
 class Solution:
     def findLHS(self, nums: List[int]) -> int:
-        nums.sort()
-        maxLen = 0
-        start = 0
-
-        for end in range(len(nums)):
-            while nums[end] - nums[start] > 1:
-                start += 1
-            if nums[end] - nums[start] == 1:
-                maxLen = max(maxLen, end - start + 1)
-        return maxLen
+        count = Counter(nums)
+        res = 0
+        for num in count:
+            if num + 1 in count:
+                res = max(res, count[num] + count[num + 1])
+        return res

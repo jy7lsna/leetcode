@@ -8,7 +8,7 @@ class Solution:
             indegree[dest] += 1
 
         queue = deque([i for i in range(numCourses) if indegree[i] == 0])
-        
+
         count = 0
         while queue:
             course = queue.popleft()
@@ -19,3 +19,4 @@ class Solution:
                     queue.append(neighbour)
         
         return count == numCourses
+

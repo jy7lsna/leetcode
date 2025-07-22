@@ -1,24 +1,21 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        preMap = {i: [] for i in range(numCourses)}
-        for crs, pre in prerequisites:
-            preMap[crs].append(pre)
+        graph = defaultdict(list)
+        indegree = [0] * numCourses
+
+        for dest, src in prerequisites:
+            graph[src].append(dest)
+            indegree[dest] += 1
+
+        queue = deque([i for i in range(numCourses) if indegree[i] == 0])
         
-        visitSet = set()
-        def dfs(crs):
-            if crs in visitSet:
-                return False
-            if preMap[crs] == []:
-                return True
-
-            visitSet.add(crs)
-            for pre in preMap[crs]:
-                if not dfs(pre): return False
-            visitSet.remove(crs)
-            preMap[crs] = []
-            return True
-
-        for crs in range(numCourses):
-            if not dfs(crs): return False
-        return True
-
+        count = 0
+        while queue:
+            course = queue.popleft()
+            count += 1
+            for neighbour in graph[course]:
+                indegree[neighbour] -= 1
+                if indegree[neighbour] == 0:
+                    queue.append(neighbour)
+        
+        return count == numCourses

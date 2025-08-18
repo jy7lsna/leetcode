@@ -3,7 +3,7 @@ class Solution:
         res = []
         i, j = 0, n
 
-        while i < n and i < 2 * n:
+        while i < n:
             res.append(nums[i])
             res.append(nums[j])
             i += 1

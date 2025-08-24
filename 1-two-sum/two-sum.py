@@ -4,9 +4,6 @@ class Solution:
         for i, num in enumerate(nums):
             wanted_num = target - num
             if wanted_num in seen:
-                return (seen[wanted_num], i)
-
+                return [seen[wanted_num], i]
             seen[num] = i
-        return (-1, -1)
-
-        
+        return [-1, -1]

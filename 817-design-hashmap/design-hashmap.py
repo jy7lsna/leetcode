@@ -1,17 +1,17 @@
 class MyHashMap:
 
     def __init__(self):
-        self.data = [None] * 1000001
+        self.hash = {}
 
     def put(self, key: int, value: int) -> None:
-        self.data[key] = value
-
+        self.hash[key] = value
+            
     def get(self, key: int) -> int:
-        val = self.data[key]
-        return val if val != None else -1
+        return self.hash[key] if key in self.hash else -1
 
     def remove(self, key: int) -> None:
-        self.data[key] = None
+        if key in self.hash:
+            del self.hash[key]
 
 
 # Your MyHashMap object will be instantiated and called as such:

@@ -1,15 +1,17 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []
-        close_to_open = {')' : '(', ']' : '[', '}' : '{'}
-        for parenthesis in s:
-            if parenthesis in "([{":
-                stack.append(parenthesis)
-            else:
-                if len(stack) == 0 or stack[-1] != close_to_open[parenthesis]:
+        st = []
+        closeToOpen = {
+            ')' : '(',
+            ']' : '[',
+            '}' : '{'
+        }
+        for ch in s:
+            if ch in closeToOpen:
+                if not st or st[-1] != closeToOpen[ch]:
                     return False
-                stack.pop()
-        return len(stack) == 0
+                st.pop()
+            else:
+                st.append(ch)
+        return len(st) == 0
 
-
-            

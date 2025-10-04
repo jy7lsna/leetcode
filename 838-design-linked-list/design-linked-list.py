@@ -58,8 +58,6 @@ class MyLinkedList:
         
         self.size -= 1
 
-
-
 # Your MyLinkedList object will be instantiated and called as such:
 # obj = MyLinkedList()
 # param_1 = obj.get(index)

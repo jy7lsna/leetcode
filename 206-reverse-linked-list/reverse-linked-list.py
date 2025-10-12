@@ -10,23 +10,23 @@
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # iterative
-        # curr = head
-        # prev= None
-        # while curr is not None:
-        #     next_node = curr.next
-        #     curr.next = prev
-        #     prev = curr
-        #     curr = next_node
-        # return prev
+        curr = head
+        prev= None
+        while curr is not None:
+            next_node = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_node
+        return prev
 
         # recursive
-        if head is None or head.next is None:
-            return head
+        # if head is None or head.next is None:
+        #     return head
         
-        new_head = self.reverseList(head.next)
+        # new_head = self.reverseList(head.next)
 
-        head.next.next = head
-        head.next = None
+        # head.next.next = head
+        # head.next = None
 
-        return new_head
+        # return new_head
 

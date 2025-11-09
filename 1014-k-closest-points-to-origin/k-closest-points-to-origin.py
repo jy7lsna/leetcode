@@ -8,4 +8,3 @@ class Solution:
             if len(max_heap) > k:
                 heapq.heappop(max_heap)
         return [[x, y] for _, x, y in max_heap]
-

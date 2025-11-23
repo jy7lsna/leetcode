@@ -13,7 +13,7 @@ class Solution:
         
         if count < k:
             return head 
-        
+
         prev = None
         curr = head
         for _ in range(k):

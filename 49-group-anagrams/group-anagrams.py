@@ -8,7 +8,6 @@ class Solution:
                 freq[ord(ch) - ord('a')] += 1
             key = tuple(freq)
             groups[key].append(s)
-        
         return list(groups.values())
 
 

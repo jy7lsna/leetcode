@@ -1,18 +1,20 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        rows = defaultdict(set)
-        cols = defaultdict(set)
-        squares  = defaultdict(set)
+        rows = [set() for _ in range(9)]
+        cols = [set() for _ in range(9)]
+        boxes = [set() for _ in range(9)]
 
         for r in range(9):
             for c in range(9):
-                if board[r][c] == ".":
+                val = board[r][c]
+                if val == ".":
                     continue
-                if ( board[r][c] in rows[r] 
-                    or board[r][c] in cols[c] 
-                    or board[r][c] in squares[(r//3, c//3)]):
+                
+                box_idx = (r//3) * 3 + (c//3)
+                if (val in rows[r] or val in cols[c] or val in boxes[box_idx]):
                     return False
-                cols[c].add(board[r][c])
-                rows[r].add(board[r][c])
-                squares[(r//3, c//3)].add(board[r][c])
+                rows[r].add(val)
+                cols[c].add(val)
+                boxes[box_idx].add(val)
         return True
+

@@ -12,9 +12,7 @@ class Solution:
         n = len(heights)
         while stack:
             h = heights[stack.pop()]
-            width = n if not stack else n -  stack[-1] - 1
+            width = n if not stack else n - stack[-1] - 1 
             max_area = max(max_area, h * width)
         
-        return max_area   
-
-
+        return max_area

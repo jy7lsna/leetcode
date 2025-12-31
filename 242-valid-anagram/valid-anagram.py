@@ -1,14 +1,10 @@
 class Solution:
+    def wordToDict(self, word):
+        d = {}
+        for letter in word:
+            d[letter] = d.get(letter, 0) + 1
+        return d
+
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
+        return self.wordToDict(s) == self.wordToDict(t)
         
-        freq = [0] * 26
-        for i in range(len(s)):
-            freq[ord(s[i]) - ord('a')] += 1
-            freq[ord(t[i]) - ord('a')] -= 1
-        
-        for count in freq:
-            if count != 0:
-                return False
-        return True

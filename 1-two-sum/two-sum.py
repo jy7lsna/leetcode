@@ -6,4 +6,5 @@ class Solution:
             if wanted_num in seen:
                 return [seen[wanted_num], i]
             seen[num] = i
+        return []
         

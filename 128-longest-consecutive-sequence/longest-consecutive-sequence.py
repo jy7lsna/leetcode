@@ -11,7 +11,3 @@ class Solution:
                 longest = max(longest, length)
         return longest
         
-
-# 100, 4, 200, 1, 3, 2
-#  i
-# 2, 3, 1, 4
